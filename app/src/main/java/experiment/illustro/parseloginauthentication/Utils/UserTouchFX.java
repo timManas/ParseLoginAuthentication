@@ -10,7 +10,7 @@ import android.view.View.OnTouchListener;
 public class UserTouchFX implements OnTouchListener
 {
 
-    
+
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent)
