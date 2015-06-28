@@ -13,7 +13,10 @@ import android.view.View.OnTouchListener;
 public class UserTouchFX implements OnTouchListener
 {
 
-    private int ALPHA = 150;
+    private int ALPHA_DOWN = 150;
+    private int ALPHA_UP = 150;
+
+    Drawable drawable;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -22,12 +25,18 @@ public class UserTouchFX implements OnTouchListener
 
         if(motionEvent.getAction() == MotionEvent.ACTION_DOWN)
         {
-            Drawable drawable = view.getBackground();
+            drawable = view.getBackground();
             drawable.mutate();
-            drawable.setAlpha(ALPHA);
+            drawable.setAlpha(ALPHA_DOWN);
             view.setBackground(drawable);
         }
-
+        else if(motionEvent.getAction() == MotionEvent.ACTION_UP  || motionEvent.getAction() == MotionEvent.ACTION_CANCEL)
+        {
+            drawable = view.getBackground();
+            drawable.mutate();
+            drawable.setAlpha(ALPHA_UP);
+            view.setBackground(drawable);
+        }
 
 
         return false;
