@@ -4,19 +4,26 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/babyblu"
+            android:background="@color/white"
             tools:context="experiment.illustro.parseloginauthentication.LoginScreen">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="30dp">
 
         <ImageView
+            android:id="@+id/imgChatlerLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/chatler_logo"/>
 
         <EditText
             android:layout_width="wrap_content"
