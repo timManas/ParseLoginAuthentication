@@ -37,7 +37,7 @@
             android:drawablePadding="10dp"
             android:inputType="textEmailAddress"
             android:hint="Enter Your Username"
-            android:background="@drawable/blu_btn"
+            android:background="@drawable/edittext_background"
             />
 
         <EditText
