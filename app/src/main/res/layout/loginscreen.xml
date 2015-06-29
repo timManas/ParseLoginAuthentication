@@ -22,7 +22,7 @@
             android:id="@+id/imgChatlerLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:src="@drawable/chatler_logo"/>
 
         <EditText
@@ -32,33 +32,59 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:textSize="16sp"
-            android:drawableLeft="@drawable/login_username_img"
             android:ems="10"
             android:drawablePadding="10dp"
             android:inputType="textEmailAddress"
             android:hint="Enter Your Username"
+            android:drawableLeft="@drawable/login_username_img"
             android:background="@drawable/edittext_background"
+
             />
 
         <EditText
+            android:id="@+id/etPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="5dp"
+            android:textSize="16sp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="Enter Your Password"
+            android:drawableLeft="@drawable/login_password_img"
+            android:background="@drawable/edittext_background"
             />
 
         <LinearLayout
+            android:id = "@+id/loginMain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
 
             <Button
-                android:layout_width="wrap_content"
+                android:id="@+id/bLogin"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Login !"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_gravity="top"
+                android:background="#ff424aff"
+                android:layout_marginRight="5dp"
                 />
 
             <Button
+                android:id="@+id/bRegister"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Register !"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:background="#ff424aff"
+                android:layout_marginLeft="5dp"
                 />
 
 
