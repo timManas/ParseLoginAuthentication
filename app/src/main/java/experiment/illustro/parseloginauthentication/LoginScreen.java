@@ -1,6 +1,7 @@
 package experiment.illustro.parseloginauthentication;
 
-import android.app.Activity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +36,11 @@ public class LoginScreen extends CustomActivity
     {
         super.onClick(view);
 
+        if(view.getId() == R.id.bRegister)
+        {
+            Intent registerIntent = new Intent(this, RegisterScreen.class);
+            startActivity(registerIntent);
+        }
 
     }
 
