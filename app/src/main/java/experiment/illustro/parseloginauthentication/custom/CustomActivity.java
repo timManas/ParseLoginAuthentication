@@ -36,7 +36,7 @@ public class CustomActivity extends FragmentActivity implements OnClickListener
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
-        actionBar.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.blu_btn,null));
+        actionBar.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.blu_btn));
         actionBar.setLogo(R.drawable.chatler_logo);
 
 
@@ -45,11 +45,25 @@ public class CustomActivity extends FragmentActivity implements OnClickListener
     public View setTouchNClick(int id)
     {
 
+        View newTouchView = setClick(id);
+        if(newTouchView != null)
+        {
+            newTouchView.setOnTouchListener(TOUCH);
+        }
+
+        return newTouchView;
+
     }
 
     public View setClick(int id)
     {
+        View newClickView = findViewById(id);
+        if(newClickView != null)
+        {
+            newClickView.setOnClickListener(this);
+        }
 
+        return newClickView;
     }
 
     @Override
