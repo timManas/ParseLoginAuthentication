@@ -20,28 +20,72 @@
         <ImageView
             android:id="@+id/imgChatlerRegister"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/chatler_logo"
+            />
 
         <EditText
             android:id="@+id/etUserEmail"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:ems="10"
+            android:drawablePadding="10dp"
+            android:inputType="textEmailAddress"
+            android:hint="Enter your Email"
+            android:drawableRight="@drawable/login_username_img"
+            android:background="@drawable/edittext_background"
+            />
 
         <EditText
             android:id="@+id/etUserNameRegister"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Enter your UserName"
+            android:drawableRight="@drawable/login_username_img"
+            android:background="@drawable/edittext_background"
+            />
 
         <EditText
             android:id="@+id/etPasswordRegister"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="Enter your Password"
+            android:drawableRight="@drawable/login_password_img"
+            android:background="@drawable/edittext_background"
+            />
 
         <Button
             android:id="@+id/bRegisterUser"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text = "Register"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:background="@drawable/blu_btn"
+            />
 
 
 

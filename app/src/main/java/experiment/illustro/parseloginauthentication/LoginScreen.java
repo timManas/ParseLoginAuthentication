@@ -24,8 +24,6 @@ public class LoginScreen extends CustomActivity
     private EditText userName;
     private EditText password;
 
-    private Button Login;
-    private Button Register;
     private ProgressDialog progressDialog;
 
 
