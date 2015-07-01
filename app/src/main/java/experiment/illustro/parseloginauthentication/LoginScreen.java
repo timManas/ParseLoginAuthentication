@@ -1,11 +1,16 @@
 package experiment.illustro.parseloginauthentication;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.parse.LogInCallback;
+import com.parse.ParseException;
+import com.parse.ParseUser;
 
 import experiment.illustro.parseloginauthentication.Utils.utilities;
 import experiment.illustro.parseloginauthentication.custom.CustomActivity;
@@ -21,6 +26,8 @@ public class LoginScreen extends CustomActivity
 
     private Button Login;
     private Button Register;
+    private ProgressDialog progressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -53,7 +60,32 @@ public class LoginScreen extends CustomActivity
                 utilities.showDialog(this, "Enter all information");
                 return;
             }
+            else
+            {
+                progressDialog = ProgressDialog.show(this, null, "Loading ...");
+            }
 
+            ParseUser.logInInBackground(strUserName, strPassword, new LogInCallback()
+            {
+                @Override
+                public void done(ParseUser parseUser, ParseException e)
+                {
+                    progressDialog.dismiss();
+
+                    if(parseUser != null)
+                    {
+                        UserDirectory.user = parseUser;
+                        Intent userListIntent = new Intent(this, UserDirectory.class);
+                        startActivity(userListIntent);
+                        finish();
+                    }
+                    else
+                    {
+                        utilities.showDialog(LoginScreen.this, "Error ... please try again");
+                        e.printStackTrace();
+                    }
+                }
+            });
 
 
         }
