@@ -8,4 +8,8 @@ import experiment.illustro.parseloginauthentication.custom.CustomActivity;
 public class RegisterScreen extends CustomActivity
 {
 
+
+
+
+
 }

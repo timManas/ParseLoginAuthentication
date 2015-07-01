@@ -98,7 +98,7 @@ public class LoginScreen extends CustomActivity
         setClick(R.id.bLogin);
         setClick(R.id.bRegister);
 
-        userName = (EditText) findViewById(R.id.etUserName);
-        password = (EditText) findViewById(R.id.etPassword);
+        userName = (EditText) findViewById(R.id.etUserNameLogin);
+        password = (EditText) findViewById(R.id.etPasswordLogin);
     }
 }
