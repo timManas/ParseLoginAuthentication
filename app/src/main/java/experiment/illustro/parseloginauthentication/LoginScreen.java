@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import com.parse.LogInCallback;
@@ -52,10 +51,12 @@ public class LoginScreen extends CustomActivity
         }
         else
         {
+            System.out.println(strUserName_Login);
+            System.out.println(strPassword_Login);
+
             if (view.getId() == R.id.bLogin)
             {
-
-                if (strUserName_Login.equals(0) || strPassword_Login.equals(0))
+                if (strUserName_Login.length() == 0  || strPassword_Login.length() == 0)
                 {
                     utilities.showDialog(this, "Enter all information");
                     return;
@@ -67,7 +68,7 @@ public class LoginScreen extends CustomActivity
                 ParseUser.logInInBackground(strUserName_Login, strPassword_Login, new LogInCallback()
                 {
                     @Override
-                    public void done(ParseUser parseUser, ParseException e)
+                    public void done(ParseUser parseUser, ParseException exception)
                     {
                         progressDialog.dismiss();
 
@@ -80,7 +81,7 @@ public class LoginScreen extends CustomActivity
                         } else
                         {
                             utilities.showDialog(LoginScreen.this, "Error ... please try again");
-                            e.printStackTrace();
+                            exception.printStackTrace();
                         }
                     }
                 });
@@ -91,10 +92,20 @@ public class LoginScreen extends CustomActivity
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 10 && resultCode == RESULT_OK)
+        {
+            finish();
+        }
+    }
+
     private void initialize()
     {
-        setClick(R.id.bLogin);
-        setClick(R.id.bRegister);
+        setTouchNClick(R.id.bLogin);
+        setTouchNClick(R.id.bRegister);
 
         userName = (EditText) findViewById(R.id.etUserNameLogin);
         password = (EditText) findViewById(R.id.etPasswordLogin);
