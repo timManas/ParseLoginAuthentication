@@ -48,7 +48,7 @@ public class LoginScreen extends CustomActivity
             String strUserName = userName.getText().toString();
             String strPassword = password.getText().toString();
 
-            if(strUserName.equals(null) || strPassword.equals(null))
+            if(strUserName.equals(0) || strPassword.equals(0))
             {
                 utilities.showDialog(this, "Enter all information");
                 return;
