@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import experiment.illustro.parseloginauthentication.Utils.utilities;
 import experiment.illustro.parseloginauthentication.custom.CustomActivity;
 
 /**
@@ -40,6 +41,21 @@ public class LoginScreen extends CustomActivity
         {
             Intent registerIntent = new Intent(this, RegisterScreen.class);
             startActivity(registerIntent);
+        }
+        else if(view.getId() == R.id.bLogin)
+        {
+
+            String strUserName = userName.getText().toString();
+            String strPassword = password.getText().toString();
+
+            if(strUserName.equals(null) || strPassword.equals(null))
+            {
+                utilities.showDialog(this, "Enter all information");
+                return;
+            }
+
+
+
         }
 
     }
