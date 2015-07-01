@@ -42,6 +42,9 @@ public class LoginScreen extends CustomActivity
     {
         super.onClick(view);
 
+        String strUserName_Login = userName.getText().toString();
+        String strPassword_Login = password.getText().toString();
+
         if(view.getId() == R.id.bRegister)
         {
             Intent registerIntent = new Intent(this, RegisterScreen.class);  // RegisterScreen
@@ -52,10 +55,7 @@ public class LoginScreen extends CustomActivity
             if (view.getId() == R.id.bLogin)
             {
 
-                String strUserName = userName.getText().toString();
-                String strPassword = password.getText().toString();
-
-                if (strUserName.equals(0) || strPassword.equals(0))
+                if (strUserName_Login.equals(0) || strPassword_Login.equals(0))
                 {
                     utilities.showDialog(this, "Enter all information");
                     return;
@@ -64,7 +64,7 @@ public class LoginScreen extends CustomActivity
                     progressDialog = ProgressDialog.show(this, null, "Loading ...");
                 }
 
-                ParseUser.logInInBackground(strUserName, strPassword, new LogInCallback()
+                ParseUser.logInInBackground(strUserName_Login, strPassword_Login, new LogInCallback()
                 {
                     @Override
                     public void done(ParseUser parseUser, ParseException e)
