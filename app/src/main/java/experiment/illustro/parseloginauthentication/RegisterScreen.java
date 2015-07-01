@@ -62,6 +62,9 @@ public class RegisterScreen extends CustomActivity
             progressDialog = ProgressDialog.show(this, null, "Please wait...");
         }
 
+        // This is how you create a new User...
+        // No need to create a table. It is automatically done for you
+
         newParseUser = new ParseUser();
         newParseUser.setEmail(strUserEmail_Register);
         newParseUser.setUsername(strUserName_Register);
