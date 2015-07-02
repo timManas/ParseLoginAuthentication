@@ -7,31 +7,29 @@ import android.widget.TextView;
 
 import com.parse.ParseUser;
 
-import java.util.ArrayList;
-
 /**
- * Created by Spirit on 7/01/2015.
+ * Created by Spirit on 7/02/2015.
  */
-public class UserDirectoryAdapter extends BaseAdapter
+class UserDirectoryAdapterX extends BaseAdapter
 {
 
-    private static ArrayList<ParseUser> userList;
+    private UserDirectory userDirectory;
 
-    public UserDirectoryAdapter(ArrayList<ParseUser> list)
+    public UserDirectoryAdapterX(UserDirectory userDirectory)
     {
-        this.userList = list;
+        this.userDirectory = userDirectory;
     }
 
     @Override
     public int getCount()
     {
-        return userList.size();
+        return userDirectory.userList.size();
     }
 
     @Override
     public ParseUser getItem(int position)
     {
-        return userList.get(position);
+        return userDirectory.userList.get(position);
     }
 
     @Override
@@ -46,7 +44,7 @@ public class UserDirectoryAdapter extends BaseAdapter
 
         if (convertView == null)
         {
-            //convertView = getLayoutInflater().inflate(R.layout.user_item, null);
+            convertView = userDirectory.getLayoutInflater().inflate(R.layout.user_item, null);
         }
 
         ParseUser user = getItem(position);
@@ -54,16 +52,15 @@ public class UserDirectoryAdapter extends BaseAdapter
         label.setText(user.getUsername());
 
         int isOnline;
-        if( user.getBoolean("ONLINE") == true)
+        if (user.getBoolean("ONLINE") == true)
         {
             isOnline = R.drawable.online;
-        }
-        else
+        } else
         {
             isOnline = R.drawable.offline;
         }
 
-        label.setCompoundDrawablesWithIntrinsicBounds(isOnline, 0 , R.drawable.marker,0);
+        label.setCompoundDrawablesWithIntrinsicBounds(isOnline, 0, R.drawable.marker, 0);
 
         return convertView;
 

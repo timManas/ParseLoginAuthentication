@@ -4,11 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -27,7 +24,7 @@ import experiment.illustro.parseloginauthentication.custom.CustomActivity;
 public class UserDirectory extends CustomActivity
 {
 
-    private ArrayList<ParseUser> userList;
+    public ArrayList<ParseUser> userList;
     public static ParseUser user;
     private String ONLINE = "ONLINE";
     private ProgressDialog progressDialog;
@@ -80,8 +77,7 @@ public class UserDirectory extends CustomActivity
                         utilities.showDialog(UserDirectory.this, "Empty List ... Add a new user");
                     }
 
-                    UserDirectoryAdapter newUserDirectoryAdapter = new UserDirectoryAdapter(userList);
-                    //UserDirectoryAdapterX newUserDirectoryAdapter = new UserDirectoryAdapterX();
+                    UserDirectoryAdapterX newUserDirectoryAdapter = new UserDirectoryAdapterX(UserDirectory.this);
 
                     userList = new ArrayList<ParseUser>(list);
                     ListView newUserList = (ListView) findViewById(R.id.userListView);
@@ -96,7 +92,6 @@ public class UserDirectory extends CustomActivity
                             startActivity(chatItent);
                         }
                     });
-
                 }
                 else
                 {
@@ -111,56 +106,4 @@ public class UserDirectory extends CustomActivity
 
     //==================================================================================================================================
 
-    public class UserDirectoryAdapterX extends BaseAdapter
-    {
-
-
-        @Override
-        public int getCount()
-        {
-            return userList.size();
-        }
-
-        @Override
-        public ParseUser getItem(int position)
-        {
-            return userList.get(position);
-        }
-
-        @Override
-        public long getItemId(int item)
-        {
-            return item;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent)
-        {
-
-            if (convertView == null)
-            {
-                convertView = getLayoutInflater().inflate(R.layout.user_item, null);
-            }
-
-            ParseUser user = getItem(position);
-            TextView label = (TextView) convertView;
-            label.setText(user.getUsername());
-
-            int isOnline;
-            if( user.getBoolean("ONLINE") == true)
-            {
-                isOnline = R.drawable.online;
-            }
-            else
-            {
-                isOnline = R.drawable.offline;
-            }
-
-            label.setCompoundDrawablesWithIntrinsicBounds(isOnline, 0 , R.drawable.marker,0);
-
-            return convertView;
-
-        }
-    } // End of Adapter
-
-}
+} // End of class
