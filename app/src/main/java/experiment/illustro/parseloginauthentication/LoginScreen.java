@@ -75,7 +75,7 @@ public class LoginScreen extends CustomActivity
                         if (parseUser != null)
                         {
                             UserDirectory.user = parseUser;
-                            Intent userListIntent = new Intent(LoginScreen.this, TestClass.class);
+                            Intent userListIntent = new Intent(LoginScreen.this, UserDirectory.class);
                             startActivity(userListIntent);
                             finish();
                         } else

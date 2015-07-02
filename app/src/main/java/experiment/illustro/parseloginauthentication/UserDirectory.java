@@ -4,11 +4,13 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.parse.FindCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
@@ -35,7 +37,7 @@ public class UserDirectory extends CustomActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_directory);
-        getActionBar().setDisplayHomeAsUpEnabled(false);
+        //getActionBar().setDisplayHomeAsUpEnabled(false);
 
         updateList_UserStatus(true);
     }
@@ -78,7 +80,9 @@ public class UserDirectory extends CustomActivity
                         utilities.showDialog(UserDirectory.this, "Empty List ... Add a new user");
                     }
 
-                    UserDirectoryAdapter newUserDirectoryAdapter = new UserDirectoryAdapter();
+                    UserDirectoryAdapter newUserDirectoryAdapter = new UserDirectoryAdapter(userList);
+                    //UserDirectoryAdapterX newUserDirectoryAdapter = new UserDirectoryAdapterX();
+
                     userList = new ArrayList<ParseUser>(list);
                     ListView newUserList = (ListView) findViewById(R.id.userListView);
                     newUserList.setAdapter(newUserDirectoryAdapter);
@@ -104,5 +108,59 @@ public class UserDirectory extends CustomActivity
         });
 
     }
+
+    //==================================================================================================================================
+
+    public class UserDirectoryAdapterX extends BaseAdapter
+    {
+
+
+        @Override
+        public int getCount()
+        {
+            return userList.size();
+        }
+
+        @Override
+        public ParseUser getItem(int position)
+        {
+            return userList.get(position);
+        }
+
+        @Override
+        public long getItemId(int item)
+        {
+            return item;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent)
+        {
+
+            if (convertView == null)
+            {
+                convertView = getLayoutInflater().inflate(R.layout.user_item, null);
+            }
+
+            ParseUser user = getItem(position);
+            TextView label = (TextView) convertView;
+            label.setText(user.getUsername());
+
+            int isOnline;
+            if( user.getBoolean("ONLINE") == true)
+            {
+                isOnline = R.drawable.online;
+            }
+            else
+            {
+                isOnline = R.drawable.offline;
+            }
+
+            label.setCompoundDrawablesWithIntrinsicBounds(isOnline, 0 , R.drawable.marker,0);
+
+            return convertView;
+
+        }
+    } // End of Adapter
 
 }

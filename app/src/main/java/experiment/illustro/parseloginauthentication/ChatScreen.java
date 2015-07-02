@@ -7,4 +7,5 @@ import experiment.illustro.parseloginauthentication.custom.CustomActivity;
  */
 public class ChatScreen extends CustomActivity
 {
+
 }
