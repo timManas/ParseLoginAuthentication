@@ -2,6 +2,57 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content"
+              android:gravity="right">
+
+    <LinearLayout
+        android:id="@+id/msg_sent_LnrLay"
+        android:background="@drawable/chat_bubble_sent"
+        android:gravity="center_vertical"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical"
+        android:paddingTop="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="45dp"
+        android:paddingBottom="5dp"
+
+        >
+
+        <TextView
+            android:id="@+id/tvDateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date / Time"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            />
+
+        <TextView
+            android:id="@+id/tvMessageSent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Message"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:maxLines="5"
+            />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvMsgDeliverySuccessful"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="20dp"
+        android:text="Status"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+
+        />
 
 </LinearLayout>
