@@ -34,7 +34,7 @@ public class UserDirectory extends CustomActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_directory);
-        //getActionBar().setDisplayHomeAsUpEnabled(false);
+        getActionBar().setDisplayHomeAsUpEnabled(false);
 
         updateList_UserStatus(true);
     }

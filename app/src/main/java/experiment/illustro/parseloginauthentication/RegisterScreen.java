@@ -79,7 +79,7 @@ public class RegisterScreen extends CustomActivity
                         if(exception == null)
                         {
                             UserDirectory.user = newParseUser;
-                            Intent userListIntent = new Intent(RegisterScreen.this, TestClass.class);
+                            Intent userListIntent = new Intent(RegisterScreen.this, UserDirectory.class);
                             startActivity(userListIntent);
                             setResult(RESULT_OK);
                             finish();
