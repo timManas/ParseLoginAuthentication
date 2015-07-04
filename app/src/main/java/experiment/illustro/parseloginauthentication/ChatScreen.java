@@ -21,6 +21,7 @@ public class ChatScreen extends CustomActivity
     protected void onResume()
     {
         super.onResume();
+        setContentView(R.layout.chatscreen);
     }
 
     @Override

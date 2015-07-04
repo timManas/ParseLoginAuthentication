@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
-              android:layout_width="match_parent"
+              android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:gravity="right">
 
@@ -22,7 +22,7 @@
         >
 
         <TextView
-            android:id="@+id/tvDateTime"
+            android:id="@+id/tvMsgSent_DateTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Date / Time"
@@ -44,7 +44,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tvMsgDeliverySuccessful"
+        android:id="@+id/tvMsgDelivery_Success"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"

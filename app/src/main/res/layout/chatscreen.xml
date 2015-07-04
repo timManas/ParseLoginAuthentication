@@ -5,34 +5,57 @@
               android:layout_height="match_parent"
               android:background="@color/white"
               android:orientation="vertical"
-    >
+            >
 
             <ListView
                 android:id="@+id/chatListView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:divider="@color/babyblu"
+                android:divider="@color/white"
                 android:dividerHeight="5dp"
                 android:fastScrollAlwaysVisible="true"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
+                tools:listitem="@layout/msg_received"
                 ></ListView>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                tools:context=".MainActivity"
                 >
 
 
                 <EditText
+                    android:id="@+id/etMessage_Input"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:hint="Type your message here"
+                    android:ems="10"
+                    android:imeActionId="100"
+                    android:imeOptions="actionSend"
+                    android:inputType="text"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:background="@drawable/edittext_background"
                     />
 
                 <Button
+                    android:id="@+id/bMessageSend"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:minHeight="1dp"
+                    android:minWidth="1dp"
+                    android:background="@drawable/marker"
                     />
 
 
