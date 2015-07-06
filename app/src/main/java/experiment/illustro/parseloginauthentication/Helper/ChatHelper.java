@@ -2,6 +2,8 @@ package experiment.illustro.parseloginauthentication.Helper;
 
 import java.util.Date;
 
+import experiment.illustro.parseloginauthentication.UserDirectory;
+
 /**
  * Created by Spirit on 7/03/2015.
  */
@@ -38,7 +40,7 @@ public class ChatHelper
     public boolean isMsgSent()
     {
 
-        return true;
+        return UserDirectory.user.getUsername().equals(Sender);
     }
 
     public Date getDateOfMsg()
