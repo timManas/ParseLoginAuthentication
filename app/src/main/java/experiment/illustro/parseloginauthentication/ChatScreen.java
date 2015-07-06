@@ -272,19 +272,31 @@ public class ChatScreen extends CustomActivity
             if(chatItemStatus.isMsgSent() == true)
             {
                 convertView = getLayoutInflater().inflate(R.layout.msg_sent, null);
+
+                dateTimeLabel = (TextView) convertView.findViewById(R.id.tvMsgSent_DateTime);
+                dateTimeLabel.setText(DateUtils.getRelativeDateTimeString(ChatScreen.this, chatItemStatus.getDateOfMsg().getTime(), DateUtils.SECOND_IN_MILLIS, DateUtils.DAY_IN_MILLIS, 0));
+
+                messageLabel = (TextView) convertView.findViewById(R.id.tvMessageSent);
+                messageLabel.setText(chatItemStatus.getMessage());
+
+                deliveryLabel = (TextView) convertView.findViewById(R.id.tvMsgDelivery_Success);
+
+
             }
             else
             {
                 convertView = getLayoutInflater().inflate(R.layout.msg_received, null);
+
+                dateTimeLabel = (TextView) convertView.findViewById(R.id.tvMsgRcv_DateTime);
+                dateTimeLabel.setText(DateUtils.getRelativeDateTimeString(ChatScreen.this, chatItemStatus.getDateOfMsg().getTime(), DateUtils.SECOND_IN_MILLIS, DateUtils.DAY_IN_MILLIS, 0));
+
+                messageLabel = (TextView) convertView.findViewById(R.id.tvMessageRcv);
+                messageLabel.setText(chatItemStatus.getMessage());
+
+                deliveryLabel = (TextView) convertView.findViewById(R.id.tvMsgReceived_Success);
             }
 
-            dateTimeLabel = (TextView) convertView.findViewById(R.id.tvMsgRcv_DateTime);
-            dateTimeLabel.setText(DateUtils.getRelativeDateTimeString(ChatScreen.this, chatItemStatus.getDateOfMsg().getTime(), DateUtils.SECOND_IN_MILLIS, DateUtils.DAY_IN_MILLIS, 0));
 
-            messageLabel = (TextView) convertView.findViewById(R.id.tvMessageRcv);
-            messageLabel.setText(chatItemStatus.getMessage());
-
-            deliveryLabel = (TextView) convertView.findViewById(R.id.tvMsgDelivery_Success);
 
             if(chatItemStatus.isMsgSent() == true)
             {
