@@ -2,6 +2,7 @@ package experiment.illustro.parseloginauthentication;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 import experiment.illustro.parseloginauthentication.custom.CustomActivity;
 
@@ -11,17 +12,21 @@ import experiment.illustro.parseloginauthentication.custom.CustomActivity;
 public class ChatScreen extends CustomActivity
 {
 
+    EditText userMessage;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.chatscreen);
     }
 
     @Override
     protected void onResume()
     {
         super.onResume();
-        setContentView(R.layout.chatscreen);
+
     }
 
     @Override
@@ -45,5 +50,11 @@ public class ChatScreen extends CustomActivity
     {
 
     }
+
+
+
+
+
+
 
 }
