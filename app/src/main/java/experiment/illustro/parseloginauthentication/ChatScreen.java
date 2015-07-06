@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.InputType;
-
 import android.text.format.DateUtils;
 import android.view.MenuItem;
 import android.view.View;
@@ -297,7 +296,6 @@ public class ChatScreen extends CustomActivity
             }
 
 
-
             if(chatItemStatus.isMsgSent() == true)
             {
 
@@ -326,9 +324,6 @@ public class ChatScreen extends CustomActivity
 
 
     }// End of ChatScreenAdapter
-
-
-
 
 
 } // End of class
