@@ -4,11 +4,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.InputType;
-import android.text.format.DateUtils;
+
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -19,8 +20,6 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.SaveCallback;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -54,31 +53,32 @@ public class ChatScreen extends CustomActivity
 
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chatscreen);
-        intialize();
+        initialize();
     }
 
-    private void intialize()
+    private void initialize()
     {
         userMessage = (EditText) findViewById(R.id.etMessage_Input);
         userMessage.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
 
         setTouchNClick(R.id.bMessageSend);
 
-        conversationArrayList = new ArrayList<>();
+        conversationArrayList = new ArrayList<ChatHelper>();
         chatAdptr = new ChatScreenAdapter();
+
         chatList = (ListView) findViewById(R.id.chatListView);
         chatList.setAdapter(chatAdptr);
+        chatList.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
         chatList.setStackFromBottom(true);
 
         recipient = getIntent().getStringExtra(SharedData.sharedData);
-        getActionBar().setTitle(recipient);
+        System.out.println("The recipient is " + recipient);
+        //getActionBar().setTitle(recipient);
 
         messageQueue = new Handler();
 
@@ -238,9 +238,7 @@ public class ChatScreen extends CustomActivity
 
     private class ChatScreenAdapter extends BaseAdapter
     {
-        TextView dateTimeLabel;
-        TextView messageLabel;
-        TextView deliveryLabel;
+
 
         @Override
         public int getCount()
@@ -264,6 +262,11 @@ public class ChatScreen extends CustomActivity
         public View getView(int position, View convertView, ViewGroup parent)
         {
 
+            TextView dateTimeLabel;
+            TextView messageLabel;
+            TextView deliveryLabel;
+
+
             ChatHelper chatItemStatus = getItem(position);
             if(chatItemStatus.isMsgSent() == true)
             {
@@ -275,7 +278,7 @@ public class ChatScreen extends CustomActivity
             }
 
             dateTimeLabel = (TextView) convertView.findViewById(R.id.tvMsgRcv_DateTime);
-            dateTimeLabel.setText(DateUtils.getRelativeDateTimeString(ChatScreen.this, chatItemStatus.getDateOfMsg().getTime(), DateUtils.SECOND_IN_MILLIS, DateUtils.DAY_IN_MILLIS, 0 ));
+            //dateTimeLabel.setText(DateUtils.getRelativeDateTimeString(ChatScreen.this, chatItemStatus.getDateOfMsg().getTime(), DateUtils.SECOND_IN_MILLIS, DateUtils.DAY_IN_MILLIS, 0 ));
 
             messageLabel = (TextView) convertView.findViewById(R.id.tvMessageRcv);
             messageLabel.setText(chatItemStatus.getMessage());
