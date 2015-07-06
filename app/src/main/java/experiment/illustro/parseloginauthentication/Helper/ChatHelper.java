@@ -14,26 +14,59 @@ public class ChatHelper
     private String message;
     private int currentStatus = currentStatusSENT;
     private Date date;
-    private String author;
+    private String Sender;
 
-    public void ChatHelper()
+    public void ChatHelper(String  userMessage, Date currentDate, String orginalSender)
     {
-
+        this.message = userMessage;
+        this.date = currentDate;
+        this.Sender = orginalSender;
     }
 
     public String getMessage()
     {
-        return null;
+        return this.message;
     }
 
-    public void setMessage()
+    public void setMessage(String newMessage)
+    {
+        this.message = newMessage;
+    }
+
+    public boolean isMsgSent()
     {
 
+        return true;
     }
 
+    public Date getDateOfMsg()
+    {
+        return this.date;
+    }
 
+    public void setDateOfMsg(Date newDate)
+    {
+        this.date = newDate;
+    }
 
+    public String getSender()
+    {
+        return this.Sender;
+    }
 
+    public void setSender(String orginialSender)
+    {
+        this.Sender = orginialSender;
+    }
 
+    public int getCurrentStatus()
+    {
+        return this.currentStatus;
+    }
+
+    public void setCurrentStatus(int newStatus)
+    {
+        this.currentStatus = newStatus;
+    }
 
 }
