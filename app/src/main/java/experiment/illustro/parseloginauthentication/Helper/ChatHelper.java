@@ -16,7 +16,9 @@ public class ChatHelper
     private Date date;
     private String Sender;
 
-    public void ChatHelper(String  userMessage, Date currentDate, String orginalSender)
+
+
+    public  ChatHelper(String  userMessage, Date currentDate, String orginalSender)
     {
         this.message = userMessage;
         this.date = currentDate;
