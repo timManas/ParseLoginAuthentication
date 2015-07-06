@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.InputType;
 
+import android.text.format.DateUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -278,7 +279,7 @@ public class ChatScreen extends CustomActivity
             }
 
             dateTimeLabel = (TextView) convertView.findViewById(R.id.tvMsgRcv_DateTime);
-            //dateTimeLabel.setText(DateUtils.getRelativeDateTimeString(ChatScreen.this, chatItemStatus.getDateOfMsg().getTime(), DateUtils.SECOND_IN_MILLIS, DateUtils.DAY_IN_MILLIS, 0 ));
+            dateTimeLabel.setText(DateUtils.getRelativeDateTimeString(ChatScreen.this, chatItemStatus.getDateOfMsg().getTime(), DateUtils.SECOND_IN_MILLIS, DateUtils.DAY_IN_MILLIS, 0));
 
             messageLabel = (TextView) convertView.findViewById(R.id.tvMessageRcv);
             messageLabel.setText(chatItemStatus.getMessage());

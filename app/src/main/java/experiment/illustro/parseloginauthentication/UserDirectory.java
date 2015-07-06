@@ -23,7 +23,6 @@ import experiment.illustro.parseloginauthentication.custom.CustomActivity;
  */
 public class UserDirectory extends CustomActivity
 {
-
     public ArrayList<ParseUser> userList;
     public static ParseUser user;
     private String ONLINE = "ONLINE";
@@ -43,7 +42,7 @@ public class UserDirectory extends CustomActivity
     protected void onResume()
     {
         super.onResume();
-        updateList_UserStatus(true);  //Watch out this is suppose to be not here
+        //updateList_UserStatus(true);  //Watch out this is suppose to be not here
         loadEntireList_UserStatus();
     }
 
