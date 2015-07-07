@@ -4,16 +4,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.InputType;
-import android.text.format.DateUtils;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
-import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -69,7 +65,7 @@ public class ChatScreen extends CustomActivity
         setTouchNClick(R.id.bMessageSend);
 
         conversationArrayList = new ArrayList<ChatHelper>();
-        chatAdptr = new ChatScreenAdapter();
+        chatAdptr = new ChatScreenAdapter(this);
 
         chatList = (ListView) findViewById(R.id.chatListView);
         chatList.setAdapter(chatAdptr);
@@ -198,7 +194,6 @@ public class ChatScreen extends CustomActivity
                     }
                 }
 
-
                 messageQueue.postDelayed(new Runnable()
                 {
                     @Override
@@ -234,96 +229,6 @@ public class ChatScreen extends CustomActivity
 
 
     // =================================================================================================================================
-
-
-    private class ChatScreenAdapter extends BaseAdapter
-    {
-
-
-        @Override
-        public int getCount()
-        {
-            return conversationArrayList.size();
-        }
-
-        @Override
-        public ChatHelper getItem(int position)
-        {
-            return conversationArrayList.get(position);
-        }
-
-        @Override
-        public long getItemId(int position)
-        {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent)
-        {
-
-            TextView dateTimeLabel;
-            TextView messageLabel;
-            TextView deliveryLabel;
-
-
-            ChatHelper chatItemStatus = getItem(position);
-            if(chatItemStatus.isMsgSent() == true)
-            {
-                convertView = getLayoutInflater().inflate(R.layout.msg_sent, null);
-
-                dateTimeLabel = (TextView) convertView.findViewById(R.id.tvMsgSent_DateTime);
-                dateTimeLabel.setText(DateUtils.getRelativeDateTimeString(ChatScreen.this, chatItemStatus.getDateOfMsg().getTime(), DateUtils.SECOND_IN_MILLIS, DateUtils.DAY_IN_MILLIS, 0));
-
-                messageLabel = (TextView) convertView.findViewById(R.id.tvMessageSent);
-                messageLabel.setText(chatItemStatus.getMessage());
-
-                deliveryLabel = (TextView) convertView.findViewById(R.id.tvMsgDelivery_Success);
-
-
-            }
-            else
-            {
-                convertView = getLayoutInflater().inflate(R.layout.msg_received, null);
-
-                dateTimeLabel = (TextView) convertView.findViewById(R.id.tvMsgRcv_DateTime);
-                dateTimeLabel.setText(DateUtils.getRelativeDateTimeString(ChatScreen.this, chatItemStatus.getDateOfMsg().getTime(), DateUtils.SECOND_IN_MILLIS, DateUtils.DAY_IN_MILLIS, 0));
-
-                messageLabel = (TextView) convertView.findViewById(R.id.tvMessageRcv);
-                messageLabel.setText(chatItemStatus.getMessage());
-
-                deliveryLabel = (TextView) convertView.findViewById(R.id.tvMsgReceived_Success);
-            }
-
-
-            if(chatItemStatus.isMsgSent() == true)
-            {
-
-                if(chatItemStatus.getCurrentStatus() == ChatHelper.currentStatusSENT)
-                {
-                    deliveryLabel.setText("Message Delievered");
-                }
-                else if(chatItemStatus.getCurrentStatus() == ChatHelper.currentStatusSENDING)
-                {
-                    deliveryLabel.setText("Message Sending..");
-                }
-                else
-                {
-                    deliveryLabel.setText("Failed");
-                }
-
-            }
-            else
-            {
-                deliveryLabel.setText("");
-            }
-
-
-            return convertView;
-        }
-
-
-    }// End of ChatScreenAdapter
 
 
 } // End of class
