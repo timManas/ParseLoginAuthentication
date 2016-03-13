@@ -49,46 +49,42 @@ public class LoginScreen extends CustomActivity
             Intent registerIntent = new Intent(this, RegisterScreen.class);  // RegisterScreen
             startActivity(registerIntent);
         }
-        else
+        else if (view.getId() == R.id.bLogin)
         {
-            System.out.println(strUserName_Login);
-            System.out.println(strPassword_Login);
-
-            if (view.getId() == R.id.bLogin)
+            if (strUserName_Login.length() == 0  || strPassword_Login.length() == 0)
             {
-                if (strUserName_Login.length() == 0  || strPassword_Login.length() == 0)
-                {
-                    utilities.showDialog(this, "Enter all information");
-                    return;
-                } else
-                {
-                    progressDialog = ProgressDialog.show(this, null, "Loading ...");
-                }
-
-                ParseUser.logInInBackground(strUserName_Login, strPassword_Login, new LogInCallback()
-                {
-                    @Override
-                    public void done(ParseUser parseUser, ParseException exception)
-                    {
-                        progressDialog.dismiss();
-
-                        if (parseUser != null)
-                        {
-                            UserDirectory.user = parseUser;
-                            Intent userListIntent = new Intent(LoginScreen.this, UserDirectory.class);
-                            startActivity(userListIntent);
-                            finish();
-                        } else
-                        {
-                            utilities.showDialog(LoginScreen.this, "Error ... please try again");
-                            exception.printStackTrace();
-                        }
-                    }
-                });
-
-
+                utilities.showDialog(this, "Enter all information");
+                return;
             }
+            else
+            {
+                progressDialog = ProgressDialog.show(this, null, "Loading ...");
+            }
+
+            ParseUser.logInInBackground(strUserName_Login, strPassword_Login, new LogInCallback()
+            {
+                @Override
+                public void done(ParseUser parseUser, ParseException exception)
+                {
+                    progressDialog.dismiss();
+
+                    if (parseUser != null)
+                    {
+                        UserDirectory.user = parseUser;
+                        Intent userListIntent = new Intent(LoginScreen.this, UserDirectory.class);
+                        startActivity(userListIntent);
+                        finish();
+                    } else
+                    {
+                        utilities.showDialog(LoginScreen.this, "Error ... please try again");
+                        exception.printStackTrace();
+                    }
+                }
+            });
+
+
         }
+
 
     }
 
